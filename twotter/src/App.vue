@@ -25,6 +25,13 @@ export default {
       }
     }
   },
+  watch:{
+    followers(newFollowerCount, oldFollowerCount){
+      if(oldFollowerCount < newFollowerCount){
+        console.log(`${this.user.userName} has gained a new follower 🥳 `);
+      }
+    }
+  },
   computed: {
     fullName() {
       return `${this.user.firstName} ${this.user.lastName}`
@@ -34,6 +41,9 @@ export default {
     followUser(){
       this.followers++;
     }
+  },
+  mounted(){
+    this.followUser();
   }
 }
 </script>
